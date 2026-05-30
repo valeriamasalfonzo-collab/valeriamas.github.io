@@ -1,0 +1,588 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valeria Mas | Operations & E-commerce Supervisor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --bg-dark: #232329;
+      --text-primary: #F9F9FB;
+      --accent: #FF5722;
+      --card-border: #3A3A43;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, "SF Pro Display", "Inter", sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* 3D Canvas */
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    /* Glassmorphism */
+    .glass {
+      background: rgba(35, 35, 41, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(58, 58, 67, 0.5);
+    }
+    
+    /* Bento Grid Cards */
+    .bento-card {
+      background: rgba(58, 58, 67, 0.25);
+      border: 1px solid var(--card-border);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .bento-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px -15px rgba(255, 87, 34, 0.15);
+      background: rgba(58, 58, 67, 0.35);
+    }
+    
+    /* Typography */
+    .text-gradient {
+      background: linear-gradient(135deg, #F9F9FB 0%, #FF5722 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Custom Selection */
+    ::selection {
+      background: rgba(255, 87, 34, 0.3);
+      color: #F9F9FB;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--card-border);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+    
+    /* TikTok Container */
+    .tiktok-container {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Button Hover Effects */
+    .btn-primary {
+      background: var(--accent);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px -10px rgba(255, 87, 34, 0.4);
+    }
+    
+    /* Network Line Animation */
+    @keyframes dash {
+      to {
+        stroke-dashoffset: -20;
+      }
+    }
+    
+    .network-line {
+      stroke-dasharray: 5, 5;
+      animation: dash 20s linear infinite;
+    }
+    
+    /* VM Watermark */
+    .vm-watermark {
+      font-size: 25rem;
+      font-weight: 700;
+      position: absolute;
+      color: rgba(58, 58, 67, 0.15);
+      z-index: 0;
+      user-select: none;
+      pointer-events: none;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- 3D Interactive Background -->
+  <div id="canvas-container"></div>
+
+  <!-- Header -->
+  <header class="fixed top-0 w-full z-50 glass">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-4">
+        <h1 class="text-xl font-semibold tracking-tight text-[#F9F9FB]">VALERIA MAS</h1>
+        <span class="px-3 py-1 text-xs font-medium bg-[#3A3A43] text-[#F9F9FB] rounded-full border border-[#FF5722]/30">
+          Bilingual: EN/ES
+        </span>
+      </div>
+      <a href="https://linkedin.com/in/valeria-mas-8bab0420a" target="_blank" rel="noopener noreferrer"
+         class="flex items-center gap-2 text-sm text-[#F9F9FB]/80 hover:text-[#FF5722] transition-colors duration-300">
+        <i data-lucide="linkedin" class="w-5 h-5"></i>
+        <span class="hidden sm:inline font-medium">LinkedIn</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="relative z-10 pt-24">
+    
+    <!-- Hero / Bio Section -->
+    <section class="max-w-7xl mx-auto px-6 py-20 lg:py-32 relative overflow-hidden">
+      <div class="absolute right-0 top-1/2 -translate-y-1/2 vm-watermark hidden lg:block">VM</div>
+      
+      <div class="grid lg:grid-cols-2 gap-12 items-center relative z-10">
+        <div class="space-y-8">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FF5722]/10 border border-[#FF5722]/20 text-[#FF5722] text-sm font-medium">
+            <span class="w-2 h-2 rounded-full bg-[#FF5722] animate-pulse"></span>
+            Operations & E-commerce Supervisor
+          </div>
+          
+          <h2 class="text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight">
+            Digital <br/>
+            <span class="text-gradient">Interconnectivity</span>
+          </h2>
+          
+          <p class="text-lg md:text-xl text-[#F9F9FB]/70 leading-relaxed max-w-xl font-light">
+            Leveraging AI engines—<span class="text-[#FF5722] font-medium">Claude, Gemini, and ChatGPT</span>—as centralized 
+            operational intelligence. I architect seamless workflows that connect retail operations, 
+            financial auditing, and high-velocity e-commerce into a unified ecosystem of efficiency.
+          </p>
+          
+          <div class="flex flex-wrap gap-6 pt-4">
+            <div class="flex items-center gap-2 text-sm text-[#F9F9FB]/60">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              United Kingdom
+            </div>
+            <div class="flex items-center gap-2 text-sm text-[#F9F9FB]/60">
+              <i data-lucide="briefcase" class="w-4 h-4"></i>
+              Available for Opportunities
+            </div>
+          </div>
+        </div>
+        
+        <!-- Stats Grid -->
+        <div class="relative">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bento-card p-6 rounded-2xl">
+              <div class="text-3xl font-bold text-[#FF5722] mb-1">5+</div>
+              <div class="text-sm text-[#F9F9FB]/60">Years Operations</div>
+            </div>
+            <div class="bento-card p-6 rounded-2xl">
+              <div class="text-3xl font-bold text-[#FF5722] mb-1">100%</div>
+              <div class="text-sm text-[#F9F9FB]/60">Inventory Accuracy</div>
+            </div>
+            <div class="bento-card p-6 rounded-2xl col-span-2">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-2xl font-bold text-[#F9F9FB]">AI-Driven</div>
+                  <div class="text-sm text-[#F9F9FB]/60">Workflow Optimization</div>
+                </div>
+                <i data-lucide="cpu" class="w-10 h-10 text-[#FF5722]"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Corporate Experience -->
+    <section class="max-w-7xl mx-auto px-6 py-20 border-t border-[#3A3A43]/30">
+      <div class="mb-12">
+        <h3 class="text-3xl font-bold mb-4 text-[#F9F9FB]">Corporate Experience</h3>
+        <div class="h-1 w-20 bg-[#FF5722] rounded-full"></div>
+      </div>
+      
+      <div class="bento-card rounded-3xl p-8 md:p-12 bg-gradient-to-br from-[#232329] to-[#1a1a1f]">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+          <div>
+            <h4 class="text-2xl md:text-3xl font-bold text-[#F9F9FB]">Clarkes of Sussex</h4>
+            <p class="text-[#FF5722] font-medium mt-2 text-lg">Shop Supervisor</p>
+          </div>
+          <div class="flex items-center gap-2 px-4 py-2 bg-[#232329] rounded-full border border-[#3A3A43]">
+            <i data-lucide="building-2" class="w-4 h-4 text-[#F9F9FB]/60"></i>
+            <span class="text-sm text-[#F9F9FB]/80 font-medium">Retail Operations</span>
+          </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="space-y-3 p-6 rounded-2xl bg-[#232329]/60 border border-[#3A3A43]/50 hover:border-[#FF5722]/30 transition-colors">
+            <div class="w-12 h-12 rounded-xl bg-[#FF5722]/10 flex items-center justify-center mb-2">
+              <i data-lucide="wallet" class="w-6 h-6 text-[#FF5722]"></i>
+            </div>
+            <h5 class="font-semibold text-[#F9F9FB] text-lg">Budget Management</h5>
+            <p class="text-sm text-[#F9F9FB]/60 leading-relaxed">Tight localized budget controls with granular financial oversight and cost optimization.</p>
+          </div>
+          
+          <div class="space-y-3 p-6 rounded-2xl bg-[#232329]/60 border border-[#3A3A43]/50 hover:border-[#FF5722]/30 transition-colors">
+            <div class="w-12 h-12 rounded-xl bg-[#FF5722]/10 flex items-center justify-center mb-2">
+              <i data-lucide="calendar-clock" class="w-6 h-6 text-[#FF5722]"></i>
+            </div>
+            <h5 class="font-semibold text-[#F9F9FB] text-lg">Rota Optimization</h5>
+            <p class="text-sm text-[#F9F9FB]/60 leading-relaxed">Restructured scheduling systems to eliminate overtime expenditure while maintaining coverage.</p>
+          </div>
+          
+          <div class="space-y-3 p-6 rounded-2xl bg-[#232329]/60 border border-[#3A3A43]/50 hover:border-[#FF5722]/30 transition-colors">
+            <div class="w-12 h-12 rounded-xl bg-[#FF5722]/10 flex items-center justify-center mb-2">
+              <i data-lucide="clipboard-check" class="w-6 h-6 text-[#FF5722]"></i>
+            </div>
+            <h5 class="font-semibold text-[#F9F9FB] text-lg">Inventory Control</h5>
+            <p class="text-sm text-[#F9F9FB]/60 leading-relaxed">Zero-discrepancy record maintenance via rigorous audit protocols and stock management.</p>
+          </div>
+          
+          <div class="space-y-3 p-6 rounded-2xl bg-[#232329]/60 border border-[#3A3A43]/50 hover:border-[#FF5722]/30 transition-colors">
+            <div class="w-12 h-12 rounded-xl bg-[#FF5722]/10 flex items-center justify-center mb-2">
+              <i data-lucide="file-spreadsheet" class="w-6 h-6 text-[#FF5722]"></i>
+            </div>
+            <h5 class="font-semibold text-[#F9F9FB] text-lg">ERP Systems</h5>
+            <p class="text-sm text-[#F9F9FB]/60 leading-relaxed">Expert-level proficiency in WIMBO & CFO Excel for financial reporting and analysis.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toypoint Enterprise -->
+    <section class="max-w-7xl mx-auto px-6 py-20 border-t border-[#3A3A43]/30">
+      <div class="mb-12">
+        <h3 class="text-3xl font-bold mb-4 text-[#F9F9FB]">Toypoint Enterprise</h3>
+        <p class="text-[#F9F9FB]/60 max-w-2xl text-lg">Independent e-commerce venture demonstrating end-to-end digital commerce capabilities, from inventory acquisition to customer retention and community building.</p>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Stats & Links -->
+        <div class="lg:col-span-1 space-y-6">
+          <div class="bento-card rounded-3xl p-8 text-center border-2 border-[#FF5722]/20 bg-gradient-to-b from-[#FF5722]/5 to-transparent">
+            <div class="text-6xl font-bold text-[#FF5722] mb-2">30+</div>
+            <div class="text-xl font-semibold text-[#F9F9FB] mb-1">Verified 5-Star Reviews</div>
+            <div class="text-sm text-[#F9F9FB]/60 mb-6">On Vinted Platform</div>
+            <div class="flex justify-center gap-1 mb-6">
+              <i data-lucide="star" class="w-6 h-6 fill-[#FF5722] text-[#FF5722]"></i>
+              <i data-lucide="star" class="w-6 h-6 fill-[#FF5722] text-[#FF5722]"></i>
+              <i data-lucide="star" class="w-6 h-6 fill-[#FF5722] text-[#FF5722]"></i>
+              <i data-lucide="star" class="w-6 h-6 fill-[#FF5722] text-[#FF5722]"></i>
+              <i data-lucide="star" class="w-6 h-6 fill-[#FF5722] text-[#FF5722]"></i>
+            </div>
+            <div class="text-xs text-[#FF5722]/80 font-medium uppercase tracking-widest">Customer Satisfaction</div>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <a href="https://www.vinted.co.uk/member/256010702-toypoint" target="_blank" rel="noopener noreferrer"
+               class="bento-card rounded-2xl p-6 flex flex-col items-center justify-center gap-3 hover:bg-[#FF5722]/10 transition-all group h-32">
+              <i data-lucide="shopping-bag" class="w-8 h-8 text-[#FF5722] group-hover:scale-110 transition-transform duration-300"></i>
+              <span class="text-sm font-semibold text-[#F9F9FB]">Vinted Store</span>
+            </a>
+            <a href="https://www.tiktok.com/@toypoint01" target="_blank" rel="noopener noreferrer"
+               class="bento-card rounded-2xl p-6 flex flex-col items-center justify-center gap-3 hover:bg-[#FF5722]/10 transition-all group h-32">
+              <i data-lucide="video" class="w-8 h-8 text-[#FF5722] group-hover:scale-110 transition-transform duration-300"></i>
+              <span class="text-sm font-semibold text-[#F9F9FB]">TikTok Shop</span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- TikTok Video Embed -->
+        <div class="lg:col-span-2">
+          <div class="bento-card rounded-3xl p-2 h-full flex flex-col bg-[#1a1a1f]">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-[#3A3A43]/50">
+              <div class="flex items-center gap-3">
+                <i data-lucide="play-circle" class="w-5 h-5 text-[#FF5722]"></i>
+                <span class="font-semibold text-[#F9F9FB]">Featured Content</span>
+              </div>
+              <a href="https://www.tiktok.com/@toypoint_pro" target="_blank" rel="noopener noreferrer" 
+                 class="text-sm text-[#FF5722] hover:underline font-medium flex items-center gap-1">
+                @toypoint_pro
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+              </a>
+            </div>
+            <div class="flex-1 flex items-center justify-center bg-[#0f0f12] rounded-2xl overflow-hidden min-h-[600px] relative tiktok-container">
+              <blockquote class="tiktok-embed" 
+                cite="https://www.tiktok.com/@toypoint_pro/video/7528518470510611734" 
+                data-video-id="7528518470510611734" 
+                style="max-width: 325px; min-width: 325px; height: 580px;">
+                <section>
+                  <a target="_blank" href="https://www.tiktok.com/@toypoint_pro">@toypoint_pro</a>
+                </section>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack Architecture -->
+    <section class="max-w-7xl mx-auto px-6 py-20 border-t border-[#3A3A43]/30 mb-20">
+      <div class="mb-16 text-center">
+        <h3 class="text-3xl md:text-4xl font-bold mb-4 text-[#F9F9FB]">Operational Architecture</h3>
+        <p class="text-[#F9F9FB]/60 text-lg max-w-2xl mx-auto">Integrated technology stack powered by AI automation channels</p>
+      </div>
+      
+      <div class="relative">
+        <!-- SVG Connection Lines -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none hidden md:block" style="z-index: 0;" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#3A3A43;stop-opacity:0.5" />
+              <stop offset="50%" style="stop-color:#FF5722;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#3A3A43;stop-opacity:0.5" />
+            </linearGradient>
+          </defs>
+          <line x1="25%" y1="50%" x2="45%" y2="50%" stroke="url(#lineGradient)" stroke-width="2" class="network-line" />
+          <line x1="55%" y1="50%" x2="75%" y2="50%" stroke="url(#lineGradient)" stroke-width="2" class="network-line" />
+          
+          <!-- Connection Nodes -->
+          <circle cx="50%" cy="50%" r="4" fill="#FF5722" class="animate-pulse" />
+        </svg>
+        
+        <div class="grid md:grid-cols-3 gap-8 relative z-10">
+          <!-- ERP Systems -->
+          <div class="bento-card rounded-3xl p-8 text-center group hover:border-[#FF5722]/50 transition-all duration-500">
+            <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-[#232329] flex items-center justify-center border border-[#3A3A43] group-hover:border-[#FF5722]/30 transition-all shadow-lg">
+              <i data-lucide="database" class="w-10 h-10 text-[#F9F9FB]/80"></i>
+            </div>
+            <h4 class="text-2xl font-bold mb-6 text-[#F9F9FB]">ERP Systems</h4>
+            <div class="space-y-3">
+              <div class="px-6 py-3 rounded-xl bg-[#232329] border border-[#3A3A43] text-[#F9F9FB]/90 font-medium">WIMBO</div>
+              <div class="px-6 py-3 rounded-xl bg-[#232329] border border-[#3A3A43] text-[#F9F9FB]/90 font-medium">CFO Excel</div>
+            </div>
+            <div class="mt-6 text-xs text-[#F9F9FB]/40 uppercase tracking-widest">Data Layer</div>
+          </div>
+          
+          <!-- AI Automation Hub -->
+          <div class="bento-card rounded-3xl p-8 text-center group border-[#FF5722]/40 bg-gradient-to-b from-[#FF5722]/10 to-[#232329]/50 transform scale-105 shadow-2xl shadow-[#FF5722]/5">
+            <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-[#FF5722]/20 flex items-center justify-center border border-[#FF5722]/50 shadow-lg shadow-[#FF5722]/20">
+              <i data-lucide="cpu" class="w-10 h-10 text-[#FF5722]"></i>
+            </div>
+            <h4 class="text-2xl font-bold mb-6 text-[#FF5722]">AI Automation</h4>
+            <div class="space-y-3">
+              <div class="px-6 py-3 rounded-xl bg-[#232329] border border-[#FF5722]/30 text-[#F9F9FB] font-medium">Claude AI</div>
+              <div class="px-6 py-3 rounded-xl bg-[#232329] border border-[#FF5722]/30 text-[#F9F9FB] font-medium">Google Gemini</div>
+              <div class="px-6 py-3 rounded-xl bg-[#232329] border border-[#FF5722]/30 text-[#F9F9FB] font-medium">ChatGPT</div>
+            </div>
+            <div class="mt-6 text-xs text-[#FF5722] uppercase tracking-widest font-semibold">Centralized Engine</div>
+          </div>
+          
+          <!-- Creative Tools -->
+          <div class="bento-card rounded-3xl p-8 text-center group hover:border-[#FF5722]/50 transition-all duration-500">
+            <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-[#232329] flex items-center justify-center border border-[#3A3A43] group-hover:border-[#FF5722]/30 transition-all shadow-lg">
+              <i data-lucide="palette" class="w-10 h-10 text-[#F9F9FB]/80"></i>
+            </div>
+            <h4 class="text-2xl font-bold mb-6 text-[#F9F9FB]">Creative Tools</h4>
+            <div class="space-y-3">
+              <div class="px-6 py-3 rounded-xl bg-[#232329] border border-[#3A3A43] text-[#F9F9FB]/90 font-medium">Canva</div>
+              <div class="px-6 py-3 rounded-xl bg-[#232329] border border-[#3A3A43] text-[#F9F9FB]/90 font-medium">Adobe Express</div>
+            </div>
+            <div class="mt-6 text-xs text-[#F9F9FB]/40 uppercase tracking-widest">Output Layer</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#3A3A43]/30 bg-[#1a1a1f]/50">
+      <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div class="text-4xl font-bold text-[#3A3A43] select-none tracking-tighter">VM</div>
+          <div class="flex gap-6">
+            <a href="https://linkedin.com/in/valeria-mas-8bab0420a" target="_blank" rel="noopener noreferrer" 
+               class="text-[#F9F9FB]/60 hover:text-[#FF5722] transition-colors">
+              <i data-lucide="linkedin" class="w-6 h-6"></i>
+            </a>
+            <a href="https://www.tiktok.com/@toypoint_pro" target="_blank" rel="noopener noreferrer" 
+               class="text-[#F9F9FB]/60 hover:text-[#FF5722] transition-colors">
+              <i data-lucide="video" class="w-6 h-6"></i>
+            </a>
+            <a href="https://www.vinted.co.uk/member/256010702-toypoint" target="_blank" rel="noopener noreferrer" 
+               class="text-[#F9F9FB]/60 hover:text-[#FF5722] transition-colors">
+              <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+            </a>
+          </div>
+          <div class="text-sm text-[#F9F9FB]/40 text-center md:text-right">
+            <p class="font-medium text-[#F9F9FB]/60">© 2024 Valeria Mas</p>
+            <p class="mt-1">Operations & E-commerce Supervisor • UK</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- TikTok Embed Script -->
+  <script async src="https://www.tiktok.com/embed.js"></script>
+  
+  <!-- Lucide Icons Initialization -->
+  <script>
+    lucide.createIcons();
+  </script>
+
+  <!-- Three.js Interactive Background -->
+  <script>
+    // Scene Configuration
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    document.getElementById('canvas-container').appendChild(renderer.domElement);
+    
+    // Particle System - Network Nodes
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = 80;
+    const posArray = new Float32Array(particlesCount * 3);
+    
+    for(let i = 0; i < particlesCount * 3; i++) {
+      posArray[i] = (Math.random() - 0.5) * 25;
+    }
+    
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    
+    const particlesMaterial = new THREE.PointsMaterial({
+      size: 0.08,
+      color: 0x3A3A43,
+      transparent: true,
+      opacity: 0.6,
+      sizeAttenuation: true
+    });
+    
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+    
+    // Connection Lines
+    const lineMaterial = new THREE.LineBasicMaterial({ 
+      color: 0xFF5722, 
+      transparent: true, 
+      opacity: 0.1 
+    });
+    
+    const lineGeometry = new THREE.BufferGeometry();
+    const linePositions = [];
+    
+    // Create connections between nearby particles
+    for(let i = 0; i < particlesCount; i++) {
+      for(let j = i + 1; j < particlesCount; j++) {
+        const dx = posArray[i*3] - posArray[j*3];
+        const dy = posArray[i*3+1] - posArray[j*3+1];
+        const dz = posArray[i*3+2] - posArray[j*3+2];
+        const distance = Math.sqrt(dx*dx + dy*dy + dz*dz);
+        
+        if(distance < 4) {
+          linePositions.push(
+            posArray[i*3], posArray[i*3+1], posArray[i*3+2],
+            posArray[j*3], posArray[j*3+1], posArray[j*3+2]
+          );
+        }
+      }
+    }
+    
+    lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+    const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+    scene.add(lines);
+    
+    // Add VM Initials as subtle 3D floating elements
+    const vmGeometry = new THREE.TorusGeometry(0.5, 0.02, 16, 100);
+    const vmMaterial = new THREE.MeshBasicMaterial({ 
+      color: 0xFF5722, 
+      transparent: true, 
+      opacity: 0.1,
+      wireframe: true
+    });
+    
+    for(let i = 0; i < 3; i++) {
+      const torus = new THREE.Mesh(vmGeometry, vmMaterial);
+      torus.position.set(
+        (Math.random() - 0.5) * 15,
+        (Math.random() - 0.5) * 15,
+        (Math.random() - 0.5) * 10 - 5
+      );
+      torus.rotation.x = Math.random() * Math.PI;
+      torus.rotation.y = Math.random() * Math.PI;
+      scene.add(torus);
+    }
+    
+    camera.position.z = 8;
+    
+    // Mouse Interaction
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    
+    const windowHalfX = window.innerWidth / 2;
+    const windowHalfY = window.innerHeight / 2;
+    
+    document.addEventListener('mousemove', (event) => {
+      mouseX = (event.clientX - windowHalfX) * 0.001;
+      mouseY = (event.clientY - windowHalfY) * 0.001;
+    });
+    
+    // Animation Loop
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      targetX = mouseX * 0.5;
+      targetY = mouseY * 0.5;
+      
+      // Smooth rotation
+      particlesMesh.rotation.y += 0.0005;
+      particlesMesh.rotation.x += 0.0002;
+      
+      lines.rotation.y += 0.0005;
+      lines.rotation.x += 0.0002;
+      
+      // Mouse parallax effect
+      camera.position.x += (mouseX * 2 - camera.position.x) * 0.05;
+      camera.position.y += (-mouseY * 2 - camera.position.y) * 0.05;
+      camera.lookAt(scene.position);
+      
+      renderer.render(scene, camera);
+    }
+    
+    animate();
+    
+    // Handle Resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+    
+    // Visibility API to pause when tab is hidden
+    document.addEventListener('visibilitychange', () => {
+      if(document.hidden) {
+        renderer.dispose();
+      }
+    });
+  </script>
+</body>
+</html>
